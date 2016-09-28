@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::post('/importCSV', 'importController@importCSV');
+Route::get('/profileList','importController@profileList');
