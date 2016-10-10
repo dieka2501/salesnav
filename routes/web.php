@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::post('/importCSV', 'importController@importCSV');
 Route::get('/profileList','importController@profileList');
+Route::get('/mail/{id}', 'HomeController@mail_admin');
+Route::post('/mail', 'sendController@send_admin');
