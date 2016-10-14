@@ -22,11 +22,11 @@
                                 </div>
                                 <div class="form-group">
                                 	<label>Message</label>
-                                    <textarea class="form-control" name='input_msg'></textarea>
+                                    <textarea class="form-control" name='input_msg' id='input_msg'></textarea>
                                 </div>
                                 <div class="row">
                                 	<div class="col-md-6">
-                                		<button class="btn btn-danger" name='btn-cancel' id='btn-cancel'>Cancel</button>
+                                		<a  href="{!!config('app.url')!!}public" class="btn btn-danger" name='btn-cancel' id='btn-cancel'>Cancel</a>
                                 	</div>
                                 	<div class="col-md-6 text-right">
                                 		<button class="btn btn-success" name='btn-send' id='btn-send'>Send</button>
@@ -43,5 +43,19 @@
         </div>
     </div>
 </div>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({selector:"#input_msg",
+                 plugins: [
+                    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                    "table contextmenu directionality emoticons template textcolor paste fullpage textcolor colorpicker textpattern"
+                  ],
+                toolbar1: " bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+                toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
+                toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak ",
+
+                menubar:false});
+</script>
 
 @endsection
