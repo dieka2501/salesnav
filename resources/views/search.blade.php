@@ -1,0 +1,183 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <title>Sales Navigator Prototype</title>
+  </head><body>
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><span>Sales Navigator Prototype</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">List Group</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <form role="form" method="GET" action="{!!config('app.url')!!}public">
+              <div class="form-group">
+                <label class="control-label" for="name">Name</label>
+                <input class="form-control" id="profile_name" name="profile_name" placeholder="Sample : Dikdik, Bagja" type="text" value="{!!$profile_name!!}">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="profile_email">Email</label>
+                <input class="form-control" id="profile_email" placeholder="Sample: yahoo,gmail.com,addres@domain.com" type="email" name="profile_email" value="{!!$profile_email!!}">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="profile_job_position">Job Position</label>
+                <input class="form-control" id="profile_job_position" placeholder="Sample: Director,CTO" type="text" name="profile_job_position" value="{!!$profile_job_position!!}">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="profile_company">Company</label>
+                <input class="form-control" id="profile_company" placeholder="Sample: data driven asia,telkom" type="text" name="profile_company" value="{!!$profile_company!!}">
+              </div>
+              <button type="submit" class="btn btn-info btn-lg">Search</button>
+            </form>
+          </div>
+          <div class="col-md-8">
+            @foreach($data as $datas)
+            <div class="row">
+              <div class="col-md-4">
+                <img src="{!!config('app.url')!!}public/image/default.png" class="img-responsive img-rounded">
+              </div>
+              <div class="col-md-8">
+                <p>
+                  <strong>{!!$datas->profile_name!!}</strong>
+                </p>
+                <div>{!!$datas->profile_job_position!!}</div>
+                <div>{!!$datas->profile_company!!}</div>
+                <div>{!!$datas->profile_email!!}</div>
+                <a class="btn btn-sm btn-success">Send Mail</a>
+                <div class="btn-group btn-group-sm">
+                  <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown"> Grouped <span class="fa fa-caret-down"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="#">Group Satu</a>
+                      <a href="#">Group Dua</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#">Add New Group</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div><hr>
+            @endforeach
+            <p>{!!$data->appends(['profile_name'=>$profile_name,'profile_email'=>$profile_email,'profile_job_position'=>$profile_job_position,
+                                  'profile_company'=>$profile_company])->links()!!}</p>
+            <!-- <div class="row">
+              <div class="col-md-4">
+                <img src="https://dl.dropboxusercontent.com/u/89103378/dieka_1292605717_78.jpg" class="img-responsive img-rounded">
+              </div>
+              <div class="col-md-8">
+                <p>
+                  <strong>Dikdik Kusdinar</strong>
+                </p>
+                <div>CTO</div>
+                <div>Data Driven Asia</div>
+                <div>profile@email.com</div>
+                <a class="btn btn-sm btn-success">Send Mail</a>
+                <div class="btn-group btn-group-sm">
+                  <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown"> Grouped <span class="fa fa-caret-down"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="#">Group Satu</a>
+                      <a href="#">Group Dua</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#">Add New Group</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div><hr> -->
+            <!-- <div class="row">
+              <div class="col-md-4">
+                <img src="https://dl.dropboxusercontent.com/u/89103378/dieka_1292605717_78.jpg" class="img-responsive img-rounded">
+              </div>
+              <div class="col-md-8">
+                <p>
+                  <strong>Dikdik Kusdinar</strong>
+                </p>
+                <div>CTO</div>
+                <div>Data Driven Asia</div>
+                <div>profile@email.com</div>
+                <a class="btn btn-sm btn-success">Send Mail</a>
+                <div class="btn-group btn-group-sm">
+                  <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown"> Grouped <span class="fa fa-caret-down"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a href="#">Group Satu</a>
+                      <a href="#">Group Dua</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#">Add New Group</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="section section-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1>Sales Nav Prototype</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisici elit,
+              <br>sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+              <br>Ut enim ad minim veniam, quis nostrud</p>
+          </div>
+          <div class="col-sm-6">
+            <p class="text-info text-right">
+              <br>
+              <br>
+            </p>
+            <div class="row">
+              <div class="col-md-12 hidden-lg hidden-md hidden-sm text-left">
+                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 hidden-xs text-right">
+                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+
+</body></html>
